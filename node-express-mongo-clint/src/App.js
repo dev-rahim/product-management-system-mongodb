@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import AddUser from './Components/AddUser/AddUser';
+import AddProduct from './Components/AddProducts/AddProducts';
 import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import NothigFound from './Components/NothingFound/NothigFound';
@@ -15,8 +15,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
-          <Route path='/users' element={<Users />} />
-          <Route path='/users/add' element={<AddUser />} />
+          <Route path='/products' element={<Users />} />
+          <Route path='/products/add' element={<AddProduct />} />
           <Route path='/users/update/:id' element={<UpdateUser />} />
           <Route path='*' element={<NothigFound />} />
         </Routes>
