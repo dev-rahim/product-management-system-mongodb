@@ -21,7 +21,15 @@ async function run() {
             const doc = req.body;
             const result = await productsCollection.insertOne(doc);
             res.json(result.insertedId)
-            console.log(`A document was inserted with the _id: ${result.insertedId}`);
+            // console.log(`A document was inserted with the _id: ${result.insertedId}`);
+        })
+        // GET API
+        app.get('/products', async (req, res) => {
+
+            const cursor = productsCollection.find({});
+            const products = await cursor.toArray()
+            res.send(products);
+            // app.send(cursor)
         })
     } finally {
         // await client.close();

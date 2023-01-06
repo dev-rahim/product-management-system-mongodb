@@ -5,7 +5,7 @@ import Header from './Components/Header/Header';
 import Home from './Components/Home/Home';
 import NothigFound from './Components/NothingFound/NothigFound';
 import UpdateUser from './Components/UpdateUser/UpdateUser';
-import Users from './Components/Users/Users';
+import Products from './Components/Products/Products';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/home' element={<Home />} />
-          <Route path='/products' element={<Users />} />
+          <Route path='/products' element={<Products />} />
           <Route path='/products/add' element={<AddProduct />} />
           <Route path='/users/update/:id' element={<UpdateUser />} />
           <Route path='*' element={<NothigFound />} />
