@@ -22,6 +22,7 @@ const AddProduct = () => {
                 // console.log(data);
                 if (data) {
                     alert('Product added successfully!')
+                    e.target.reset()
                 }
             })
         e.preventDefault();
