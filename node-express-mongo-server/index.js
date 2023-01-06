@@ -32,12 +32,36 @@ async function run() {
             res.send(products);
             // app.send(cursor)
         })
+        app.get('/products/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const product = await productsCollection.findOne(query)
+            res.send(product)
+        })
         //DELETE API
         app.delete('/products/:id', async (req, res) => {
             const id = req.params.id;
             const query = { _id: ObjectId(id) }
             const result = await productsCollection.deleteOne(query);
             res.json(result.deletedCount);
+        })
+
+        // Update API 
+        app.put('/products/update/:id', async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: ObjectId(id) };
+            // this option instructs the method to create a document if no documents match the filter
+            const options = { upsert: true };
+            // create a document that sets the plot of the movie
+            const updateDoc = {
+                $set: {
+                    name: req.body.name,
+                    price: req.body.price,
+                    quantity: req.body.quantity,
+                }
+            };
+            const result = await productsCollection.updateOne(filter, updateDoc, options);
+            res.json(result.matchedCount)
         })
     } finally {
         // await client.close();
